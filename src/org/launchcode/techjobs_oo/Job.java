@@ -2,7 +2,7 @@ package org.launchcode.techjobs_oo;
 
 import java.util.Objects;
 
-public class Job {
+public class Job{
 
     private int id;
     private static int nextId = 1;
