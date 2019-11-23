@@ -10,18 +10,18 @@ import static org.junit.Assert.assertNotEquals;
 
 public class JobTest {
 
-    Job job;
+    Job job,job1;
 
     @Before
     public void createClass() {
         job = new Job();
-
+        job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
     }
 
     //Assert each Job object should contain a unique ID number in sequential integers
     @Test
     public void testSettingJobId() {
-        Job job1 = new Job();
+        //Job job3 = new Job();
         int id = job1.getId() - job.getId();
         assertEquals(id, 1);
     }
@@ -40,12 +40,30 @@ public class JobTest {
         Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertNotEquals(job1.getId(), job2.getId());
     }
+
+    //Test for Blank Line in toString method
     @Test
     public void blankLineBeforeAfterJob(){
-        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
         String text=job1.toString();
-        assertTrue(text.isBlank());
+        assertTrue(text.contains("\n"));
     }
+
+    //Assert the string should contain a label for each field, followed by the data stored in that field. Each field should be on its own line.
+    @Test
+    public void labelForFields(){
+        String text=job1.toString();
+        assertTrue(text.contains("\n"+"ID: "+job1.getId()+"\nName: "+job1.getName()+"\nEmployer: "+job1.getEmployer()+"\nLocation: "+job1.getLocation()+"\nPosition Type: "+job1.getPositionType()+"\nCore Competency: "+job1.getCoreCompetency()+"\n"));
+    }
+
+    //If a field is empty, the method should add, “Data not available” after the label.
+//    @Test
+//    public void dataNotAvailable(){
+//        Job jobNoData = new Job("", new Employer(""), new Location(""), new PositionType(" "), new CoreCompetency(" "));
+//        String text=jobNoData.toString();
+//        //assertEquals("Name: Data not available","Name: "+jobNoData.getName());
+//        assertEquals("Employer: "+jobNoData.getEmployer(),"Employer: Data not available");
+//    }
 }
 
 

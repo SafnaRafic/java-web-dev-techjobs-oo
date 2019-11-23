@@ -23,8 +23,8 @@ public class Job {
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
         this();
-        this.name = name;
-        this.employer = employer;
+        this.name=name;
+        this.employer=employer;
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
@@ -94,6 +94,14 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
     public String toString(){
-        return " ";
+
+        return "\n" +
+                "ID: "+id+
+                "\nName: "+name+
+                "\nEmployer: "+employer+
+                "\nLocation: "+location+
+                "\nPosition Type: "+positionType+
+                "\nCore Competency: "+coreCompetency+
+                "\n";
     }
 }
