@@ -23,8 +23,8 @@ public class Job {
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
         this();
-        this.name=name;
-        this.employer=employer;
+        this.name = name;
+        this.employer = employer;
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
@@ -94,14 +94,33 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
     public String toString(){
-
+        if(name == ""){
+            this.name="Data not available";
+        }
+        if(employer.getValue() == null){
+            employer=new Employer("Data not available");
+            this.employer=employer;
+        }
+        if(location.getValue() == null){
+            location=new Location("Data not available");
+            this.location=location;
+        }
+        if(positionType.getValue() == null){
+            positionType=new PositionType("Data not available");
+            this.positionType=positionType;
+        }
+        if(coreCompetency.getValue() == null){
+            coreCompetency=new CoreCompetency("Data not available");
+            this.coreCompetency=coreCompetency;
+        }
         return "\n" +
-                "ID: "+id+
-                "\nName: "+name+
-                "\nEmployer: "+employer+
-                "\nLocation: "+location+
-                "\nPosition Type: "+positionType+
-                "\nCore Competency: "+coreCompetency+
-                "\n";
+                    "ID: " + id +
+                    "\nName: " + name +
+                    "\nEmployer: " + employer +
+                    "\nLocation: " + location +
+                    "\nPosition Type: " + positionType +
+                    "\nCore Competency: " + coreCompetency +
+                    "\n";
+
     }
 }

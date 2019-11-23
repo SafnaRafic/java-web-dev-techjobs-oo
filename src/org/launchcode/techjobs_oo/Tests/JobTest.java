@@ -57,13 +57,17 @@ public class JobTest {
     }
 
     //If a field is empty, the method should add, “Data not available” after the label.
-//    @Test
-//    public void dataNotAvailable(){
-//        Job jobNoData = new Job("", new Employer(""), new Location(""), new PositionType(" "), new CoreCompetency(" "));
-//        String text=jobNoData.toString();
-//        //assertEquals("Name: Data not available","Name: "+jobNoData.getName());
-//        assertEquals("Employer: "+jobNoData.getEmployer(),"Employer: Data not available");
-//    }
+    @Test
+    public void dataNotAvailable(){
+        Job jobNoData = new Job("", new Employer(), new Location("California"), new PositionType("Web Developer"), new CoreCompetency());
+        String text=jobNoData.toString();
+        assertEquals("Name: Data not available","Name: "+jobNoData.getName());
+        assertEquals("Employer: Data not available","Employer: "+jobNoData.getEmployer());
+        assertEquals("Location: California", "Location: "+jobNoData.getLocation());
+        assertEquals("Position Type: Web Developer","Position Type: "+jobNoData.getPositionType());
+        assertEquals("Core Competency: Data not available","Core Competency: "+jobNoData.getCoreCompetency());
+        assertTrue(text.contains("\nID: "+jobNoData.getId()+"\nName: Data not available"+"\nEmployer: Data not available"+"\nLocation: California"+"\nPosition Type: Web Developer"+"\nCore Competency: Data not available"));
+    }
 }
 
 
