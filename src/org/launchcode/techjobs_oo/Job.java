@@ -94,7 +94,11 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
     public String toString(){
-        if(name == ""){
+
+        if((name.equals("")) && (employer.getValue() == null) && (location.getValue() == null) && (positionType.getValue() == null) && (coreCompetency.getValue() == null)){
+            return "OOPS! This job does not seem to exist";
+        }
+        if(name.equals("")){
             this.name="Data not available";
         }
         if(employer.getValue() == null){
@@ -113,6 +117,7 @@ public class Job {
             coreCompetency=new CoreCompetency("Data not available");
             this.coreCompetency=coreCompetency;
         }
+
         return "\n" +
                     "ID: " + id +
                     "\nName: " + name +

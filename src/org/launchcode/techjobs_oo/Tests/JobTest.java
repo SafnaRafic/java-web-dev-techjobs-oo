@@ -58,15 +58,23 @@ public class JobTest {
 
     //If a field is empty, the method should add, “Data not available” after the label.
     @Test
-    public void dataNotAvailable(){
-        Job jobNoData = new Job("", new Employer(), new Location("California"), new PositionType("Web Developer"), new CoreCompetency());
-        String text=jobNoData.toString();
-        assertEquals("Name: Data not available","Name: "+jobNoData.getName());
-        assertEquals("Employer: Data not available","Employer: "+jobNoData.getEmployer());
-        assertEquals("Location: California", "Location: "+jobNoData.getLocation());
-        assertEquals("Position Type: Web Developer","Position Type: "+jobNoData.getPositionType());
-        assertEquals("Core Competency: Data not available","Core Competency: "+jobNoData.getCoreCompetency());
-        assertTrue(text.contains("\nID: "+jobNoData.getId()+"\nName: Data not available"+"\nEmployer: Data not available"+"\nLocation: California"+"\nPosition Type: Web Developer"+"\nCore Competency: Data not available"));
+    public void fieldEmptyDataNotAvailable(){
+        Job dataNotAvailableJob = new Job("", new Employer(), new Location("California"), new PositionType("Web Developer"), new CoreCompetency());
+        String text=dataNotAvailableJob.toString();
+        assertEquals("Name: Data not available","Name: "+dataNotAvailableJob.getName());
+        assertEquals("Employer: Data not available","Employer: "+dataNotAvailableJob.getEmployer());
+        assertEquals("Location: California", "Location: "+dataNotAvailableJob.getLocation());
+        assertEquals("Position Type: Web Developer","Position Type: "+dataNotAvailableJob.getPositionType());
+        assertEquals("Core Competency: Data not available","Core Competency: "+dataNotAvailableJob.getCoreCompetency());
+        assertTrue(text.contains("\nID: "+dataNotAvailableJob.getId()+"\nName: Data not available"+"\nEmployer: Data not available"+"\nLocation: California"+"\nPosition Type: Web Developer"+"\nCore Competency: Data not available"));
+    }
+
+    //If a Job object ONLY contains data for the id field, the method should return, “OOPS! This job does not seem to exist.”
+    @Test
+    public void dataContainsOnlyID(){
+        Job emptyData=new Job("",new Employer(),new Location(),new PositionType(),new CoreCompetency());
+        String text=emptyData.toString();
+        assertEquals("OOPS! This job does not seem to exist",text);
     }
 }
 
